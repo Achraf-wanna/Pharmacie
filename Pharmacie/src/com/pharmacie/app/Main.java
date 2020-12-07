@@ -121,7 +121,7 @@ public class Main {
 		 		}
 				System.out.print("Manage medicine number : ");
 		 	  	nbrElement = reader.nextInt();
-		 		  System.out.print("Do you want to edit/delete/? (e/d) : ");
+		 		  System.out.print("Do you want to edit/delete/help? (e/d/h) : ");
 		 		  char pos = reader.next().charAt(0);
 		 		  switch (pos) {
 		 		  case 'e':
@@ -141,12 +141,14 @@ public class Main {
 			    		    System.out.println(i+1 +"-"+ medicineList.get(i));
 		 			  }
 		 			  break;
+		 		  case 'h' :
+		 			 System.out.print("here you can manage ( edit , delete ) a medecine .\n");
 		 		  }
 		 		  
 		 		  //add pharmacist
 				break;
 			case 3:
-				System.out.print("Add new pharmacist? (y/n) : ");
+				System.out.print("Add new pharmacist? (y/n/h) : ");
 				yesno = reader.next().charAt(0);
 				switch(yesno) {
 		 	  	case 'y':
@@ -165,13 +167,17 @@ public class Main {
 		 		  break;
 		 	  	case 'n':
 		 		  break;
+		 	   case 'h' :
+		 			 System.out.print("here you can Add a new pharmacist .\n");
+		 		  break;
+		 		  
 		 	  	}
 				for(int i=0; i < pharmacistList.size(); i++){
 		 		    System.out.println(i+1 +"-"+ pharmacistList.get(i));
 		 		}
 				System.out.print("Manage pharmacist number : ");
 		 	  	nbrElement = reader.nextInt();
-		 		  System.out.print("Do you want to (e/d) : ");
+		 		  System.out.print("Do you want to (e/d/h) : ");
 		 		   pos = reader.next().charAt(0);
 		 		  switch (pos) {
 		 		  case 'e':
@@ -192,6 +198,9 @@ public class Main {
 			    		    System.out.println(i+1 +"-"+ pharmacistList.get(i));
 		 			  }
 		 			  break;
+		 		 case 'h' :
+		 			 System.out.print("here you can ( edit , delete ) a pharmacist .\n");
+		 		  break;
 		 		  }
 				break;
 			}
