@@ -19,9 +19,9 @@ public class Main {
 		while(true) {
 			Scanner reader = new Scanner(System.in);
 			Scanner reader2 = new Scanner(System.in);
-			System.out.print("1.  Clients. ");
-			System.out.print("2.  Medicines. ");
-			System.out.print("3.  Pharmacists. ");
+			System.out.print("1.  Clients. \n");
+			System.out.print("2.  Medicines. \n");
+			System.out.print("3.  Pharmacists. \n");
 			int choice = reader.nextInt();
 			switch(choice) {
 			case 1:
@@ -97,7 +97,7 @@ public class Main {
 		 	  	//Add new drug
 				break;
 			case 2:
-				System.out.print("Add new medicine? (y/n) : ");
+				System.out.print("Add new medicine? (y/n/h) : ");
 				yesno = reader.next().charAt(0);
 				switch(yesno) {
 		 	  	case 'y':
@@ -114,6 +114,9 @@ public class Main {
 			    	  }
 		 		  break;
 		 	  	case 'n':
+		 		  break;
+		 	  	case 'h' :
+		 			 System.out.print("here you can manage ( edit , delete ) a medecine .\n");
 		 		  break;
 		 	  	}
 				for(int i=0; i < medicineList.size(); i++){
