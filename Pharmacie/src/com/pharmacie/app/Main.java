@@ -49,7 +49,7 @@ public class Main {
 		 		}
 				System.out.print("Manage client number : ");
 		 	  	int nbrElement = reader.nextInt();
-		 	  	System.out.print("1. Client bought new item. ");
+		 	  	System.out.print("1. New Order. ");
 		 	  	System.out.print("2. Edit client. ");
 		 	  	System.out.print("3. Delete client. ");
 		 	  	int choice2 = reader.nextInt();
