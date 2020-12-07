@@ -19,28 +19,31 @@ public class Main {
 		while(true) {
 			Scanner reader = new Scanner(System.in);
 			Scanner reader2 = new Scanner(System.in);
-			System.out.print("1.  Clients. \n");
-			System.out.print("2.  Medicines. \n");
-			System.out.print("3.  Pharmacists. \n");
+			Scanner readerZ= new Scanner(System.in);
+			System.out.print("1.  Clients. ");
+			System.out.print("2.  Medicines. ");
+			System.out.print("3.  Pharmacists. ");
 			int choice = reader.nextInt();
 			switch(choice) {
 			case 1:
 				System.out.print("Add new client? (y/n) : ");
-				char yesno = reader.next().charAt(0);
-				switch(yesno) {
+				char yn = reader.next().charAt(0);
+				switch(yn) {
 		 	  	case 'y':
-		 		  while(yesno=='y') {
-		 			  System.out.print("Enter client id, firstname, lastname : ");
+		 		  while(yn=='y') {
+		 			  System.out.print("Enter client id, firstname, lastname, Email,tel : ");
 		 			  int id= reader.nextInt();
 		 			  String firstName= reader2.nextLine();
 		 			  String lastName= reader2.nextLine();
-		 			  int itemsPurchased= 0;
-		 			  boolean isLoyal= false;
-		 			  Client newClient = new Client(id,firstName,lastName,itemsPurchased,isLoyal);
+		 			  String email = reader2.nextLine();
+		 			  int tel = reader.nextInt();
+		 			  int NbrOrder= 0;
+		 			  boolean fidele= false;
+		 			  Client newClient = new Client(id,firstName,lastName,email,tel,fidele,NbrOrder);
 		 			  clientList.add(newClient);
 		 			 
 			    		  System.out.print("Add another client? y/n : ");
-				    	  yesno = reader.next().charAt(0);
+				    	  yn = reader.next().charAt(0);
 			    	  }
 		 		  break;
 		 	  	case 'n':
@@ -59,13 +62,13 @@ public class Main {
 		 	  	int choice2 = reader.nextInt();
 		 	  	switch(choice2) {
 		 	  	case 1:
-		 	  		int newItem = clientList.get(nbrElement-1).getItemsPurchased();
-		 	  		newItem++;
-		 	  		clientList.get(nbrElement-1).setItemsPurchased(newItem);
-		 	  		if(newItem>=3) {
-		 	  			clientList.get(nbrElement-1).setIsLoyal(true);
+		 	  		int newOrder = clientList.get(nbrElement-1).getNbrOrder();
+		 	  		newOrder++;
+		 	  		clientList.get(nbrElement-1).setNbrOrder(newOrder);
+		 	  		if(newOrder>=3) {
+		 	  			clientList.get(nbrElement-1).setfidele(true);
 		 	  		}else {
-		 	  			clientList.get(nbrElement-1).setIsLoyal(false);
+		 	  			clientList.get(nbrElement-1).setfidele(false);
 		 	  		}
 		 	  		for(int i=0; i < clientList.size(); i++){
 		    		    System.out.println(i+1 +"-"+ clientList.get(i));
@@ -74,13 +77,15 @@ public class Main {
 		 	  		// add new client
 		 	  		break;
 		 	  	case 2:
-		 	  		System.out.print("Enter new client id, firstname, lastname : ");
+		 	  		System.out.print("Enter new client id, firstname, lastname,Email,tel : ");
 		 			  int id= reader.nextInt();
 		 			  String firstName= reader2.nextLine();
 		 			  String lastName= reader2.nextLine();
-		 			  int items= clientList.get(nbrElement-1).getItemsPurchased();
-		 			  boolean loyal= clientList.get(nbrElement-1).getIsLoyal();
-		 			 Client modification = new Client(id,firstName,lastName,items,loyal);
+		 			  String email = reader2.nextLine();
+		 			  int tel = reader.nextInt();
+		 			  int items= clientList.get(nbrElement-1).getNbrOrder();
+		 			  boolean loyal= clientList.get(nbrElement-1).getfidele();
+		 			 Client modification = new Client(id,firstName,lastName,email,tel,loyal,items);
 		 			 clientList.set(nbrElement-1, modification);
 		 			  for(int i=0; i < clientList.size(); i++){
 			    		    System.out.println(i+1 +"-"+ clientList.get(i));
@@ -97,26 +102,24 @@ public class Main {
 		 	  	//Add new drug
 				break;
 			case 2:
-				System.out.print("Add new medicine? (y/n/h) : ");
-				yesno = reader.next().charAt(0);
-				switch(yesno) {
+				System.out.print("Add new medicine? (y/n) : ");
+				yn = reader.next().charAt(0);
+				switch(yn) {
 		 	  	case 'y':
-		 		  while(yesno=='y') {
+		 		  while(yn=='y') {
 		 			  System.out.print("Enter medicine id, name, price : ");
 		 			  int id= reader.nextInt();
 		 			  String name= reader2.nextLine();
+		 			 String des= reader2.nextLine();
 		 			  double price= reader2.nextDouble();
-		 			  Medicine newMedicine = new Medicine(id,name,price);
+		 			  Medicine newMedicine = new Medicine(id,name,des,price);
 		 			  medicineList.add(newMedicine);
 		 			 
 			    		  System.out.print("Add another medicine? y/n : ");
-				    	  yesno = reader.next().charAt(0);
+				    	  yn = reader.next().charAt(0);
 			    	  }
 		 		  break;
 		 	  	case 'n':
-		 		  break;
-		 	  	case 'h' :
-		 			 System.out.print("here you can manage ( edit , delete ) a medecine .\n");
 		 		  break;
 		 	  	}
 				for(int i=0; i < medicineList.size(); i++){
@@ -128,11 +131,12 @@ public class Main {
 		 		  char pos = reader.next().charAt(0);
 		 		  switch (pos) {
 		 		  case 'e':
-		 			  System.out.print("Enter new medicine id, name, price : ");
+		 			  System.out.print("Enter new medicine id, name,des, price : ");
 		 			  int id= reader.nextInt();
-		 			  String name= reader2.nextLine();
+		 			  String name= readerZ.nextLine();
+		 			  String des= readerZ.nextLine();
 		 			  double price= reader2.nextDouble();
-		 			 Medicine modification = new Medicine(id,name,price);
+		 			 Medicine modification = new Medicine(id,name,des,price);
 		 			 medicineList.set(nbrElement-1, modification);
 		 			  for(int i=0; i < medicineList.size(); i++){
 			    		    System.out.println(i+1 +"-"+ medicineList.get(i));
@@ -152,20 +156,22 @@ public class Main {
 				break;
 			case 3:
 				System.out.print("Add new pharmacist? (y/n/h) : ");
-				yesno = reader.next().charAt(0);
-				switch(yesno) {
+				yn = reader.next().charAt(0);
+				switch(yn) {
 		 	  	case 'y':
-		 		  while(yesno=='y') {
-		 			  System.out.print("Enter pharmacist id, firstName, lastName, salary : ");
+		 		  while(yn=='y') {
+		 			  System.out.print("Enter pharmacist id, firstName, lastName,Email,Tel, salary : ");
 		 			  int id= reader.nextInt();
 		 			  String firstName= reader2.nextLine();
 		 			  String lastName= reader2.nextLine();
+		 			  String email = reader2.nextLine();
+		 			  int tel = reader.nextInt();
 		 			  String salary= reader2.nextLine();
-		 			  Pharmacist newPharmacist = new Pharmacist(id,firstName,lastName,salary);
+		 			  Pharmacist newPharmacist = new Pharmacist(id , firstName, lastName,email,tel,salary);
 		 			  pharmacistList.add(newPharmacist);
 		 			 
 			    		  System.out.print("Add another pharmacist? y/n : ");
-				    	  yesno = reader.next().charAt(0);
+				    	  yn = reader.next().charAt(0);
 			    	  }
 		 		  break;
 		 	  	case 'n':
@@ -184,12 +190,14 @@ public class Main {
 		 		   pos = reader.next().charAt(0);
 		 		  switch (pos) {
 		 		  case 'e':
-		 			  System.out.print("Enter new pharmacist id, firstName, lastName, salary : ");
+		 			  System.out.print("Enter new pharmacist id, firstName, lastName,Email,Tel, salary : ");
 		 			 int id= reader.nextInt();
 		 			  String firstName= reader2.nextLine();
 		 			  String lastName= reader2.nextLine();
+		 			  String email = reader2.nextLine();
+		 			  int tel = reader.nextInt();
 		 			  String salary= reader2.nextLine();
-		 			 Pharmacist modification = new Pharmacist(id,firstName,lastName,salary);
+		 			 Pharmacist modification =new Pharmacist(id , firstName, lastName,email,tel,salary);
 		 			 pharmacistList.set(nbrElement-1, modification);
 		 			  for(int i=0; i < pharmacistList.size(); i++){
 			    		    System.out.println(i+1 +"-"+ pharmacistList.get(i));

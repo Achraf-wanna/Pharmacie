@@ -10,8 +10,8 @@ public class Pharmacist extends Person {
 		this.salary= salary;
 	}
 	
-	public Pharmacist(int id, String firstName, String lastName, String salary) {
-		super (id , firstName, lastName);
+	public Pharmacist(int id, String firstName, String lastName,String email,int tel, String salary) {
+		super (id , firstName, lastName,email,tel);
 		this.salary= salary;
 	}
 	public Pharmacist() {

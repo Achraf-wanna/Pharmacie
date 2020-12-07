@@ -3,28 +3,28 @@ package com.pharmacie.app.models;
 public class Client extends Person{
 	
 
-	private int itemsPurchased= 0;
-	boolean isLoyal= false;
+	private int NbrOrder= 0;
+	boolean fidele= false;
 	
 	
-	public int getItemsPurchased() {
-		return itemsPurchased;
+	public int getNbrOrder() {
+		return NbrOrder;
 	}
-	public void setItemsPurchased(int itemsPurchased) {
-		this.itemsPurchased= itemsPurchased;
-	}
-	
-	public boolean getIsLoyal() {
-		return isLoyal;
-	}
-	public void setIsLoyal(boolean isLoyal) {
-		this.isLoyal= isLoyal;
+	public void setNbrOrder(int NbrOrder) {
+		this.NbrOrder= NbrOrder;
 	}
 	
-	public Client(int id, String firstName, String lastName, int itemsPurchased, boolean isLoyal) {
-		super (id , firstName, lastName);
-		this.itemsPurchased= itemsPurchased;
-		this.isLoyal= isLoyal;
+	public boolean getfidele() {
+		return fidele;
+	}
+	public void setfidele(boolean fidele) {
+		this.fidele= fidele;
+	}
+	
+	public Client(int id, String firstName, String lastName,String email,int tel, boolean fidele, int NbrOrder) {
+		super (id , firstName, lastName,email,tel);
+		this.NbrOrder= NbrOrder;
+		this.fidele= fidele;
 	}
 	
 	public Client() {		
@@ -33,7 +33,7 @@ public class Client extends Person{
 	
 	@Override
 	public String toString() {
-		return super.toString() + "\n Items purchased: " + itemsPurchased + "\n Is loyal: " + isLoyal;
+		return super.toString() + "\n Items purchased: " + NbrOrder + "\n Is loyal: " + fidele;
 	}
 	
 
