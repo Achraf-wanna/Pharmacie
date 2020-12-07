@@ -14,12 +14,14 @@ public class Main {
 		ArrayList<Medicine> medicineList= new ArrayList<Medicine>();
 		ArrayList<Pharmacist> pharmacistList= new ArrayList<Pharmacist>();
 		
+		//client has to choose
+		
 		while(true) {
 			Scanner reader = new Scanner(System.in);
 			Scanner reader2 = new Scanner(System.in);
-			System.out.print("1. Manage Clients. ");
-			System.out.print("2. Manage Medicines. ");
-			System.out.print("3. Manage Pharmacists. ");
+			System.out.print("1.  Clients. ");
+			System.out.print("2.  Medicines. ");
+			System.out.print("3.  Pharmacists. ");
 			int choice = reader.nextInt();
 			switch(choice) {
 			case 1:
@@ -44,6 +46,8 @@ public class Main {
 		 	  	case 'n':
 		 		  break;
 		 	  	}
+				
+				// clients list and check if it"s loyal:
 				for(int i=0; i < clientList.size(); i++){
 		 		    System.out.println(i+1 +"-"+ clientList.get(i));
 		 		}
@@ -66,6 +70,8 @@ public class Main {
 		 	  		for(int i=0; i < clientList.size(); i++){
 		    		    System.out.println(i+1 +"-"+ clientList.get(i));
 	 			  }
+		 	  		
+		 	  		// add new client
 		 	  		break;
 		 	  	case 2:
 		 	  		System.out.print("Enter new client id, firstname, lastname : ");
@@ -87,6 +93,8 @@ public class Main {
 		 			  }
 		 	  		break;
 		 	  	}
+		 	  	
+		 	  	//Add new drug
 				break;
 			case 2:
 				System.out.print("Add new medicine? (y/n) : ");
@@ -134,6 +142,8 @@ public class Main {
 		 			  }
 		 			  break;
 		 		  }
+		 		  
+		 		  //add pharmacist
 				break;
 			case 3:
 				System.out.print("Add new pharmacist? (y/n) : ");
@@ -161,7 +171,7 @@ public class Main {
 		 		}
 				System.out.print("Manage pharmacist number : ");
 		 	  	nbrElement = reader.nextInt();
-		 		  System.out.print("Do you want to edit/delete/? (e/d) : ");
+		 		  System.out.print("Do you want to (e/d) : ");
 		 		   pos = reader.next().charAt(0);
 		 		  switch (pos) {
 		 		  case 'e':
