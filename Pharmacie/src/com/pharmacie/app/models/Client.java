@@ -1,10 +1,12 @@
 package com.pharmacie.app.models;
 
+import java.util.ArrayList;
+
 public class Client extends Person{
 	
 
-	private int NbrOrder= 0;
-	boolean fidele= false;
+	private int NbrOrder;
+	boolean fidele;
 	
 	
 	public int getNbrOrder() {
@@ -36,7 +38,32 @@ public class Client extends Person{
 		return super.toString() + "\n Items purchased: " + NbrOrder + "\n Is loyal: " + fidele;
 	}
 	
-
+public String addPerson(ArrayList<Client> listClient, Client client) {
+	try {
+		listClient.add(client);
+		return "Person Added";
+		
+	}catch(Exception ex) {
+		return ex.getMessage();
+		
+	}
+		
+	}
+    
+    
+    
+    public String editPerson(ArrayList<Client> listClient, Client client, int index) {
+		try {
+			
+			listClient.set(index, client);
+			return "Person Edited !";
+			
+		}catch(Exception ex) {
+			return ex.getMessage();
+			
+		}
+			
+		}
 	
 
 }

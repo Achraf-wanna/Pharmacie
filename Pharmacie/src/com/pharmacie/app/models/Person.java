@@ -1,5 +1,7 @@
 package com.pharmacie.app.models;
 
+import java.util.ArrayList;
+
 public class Person {
 	private int id;
 	private String firstName;
@@ -63,4 +65,42 @@ public class Person {
 	public String toString() {
 		return " id:"+ id + "\n Firstname:"+ firstName + "\n LastName:" + lastName + "\n Email:" + email +  "\n tel:" + tel  ;
 	}
+	
+	public String addPerson(ArrayList<Person> listPerson, Person person) {
+		try {
+			listPerson.add(person);
+			return "Person Added";
+			
+		}catch(Exception ex) {
+			return ex.getMessage();
+			
+		}
+			
+		}
+		
+		public String editPerson(ArrayList<Person> listPerson, Person person, int index) {
+		try {
+			
+			listPerson.set(index, person);
+			return "Person Edited !";
+			
+		}catch(Exception ex) {
+			return ex.getMessage();
+			
+		}
+			
+		}
+		
+		public String deletePerson(ArrayList<Person> listPerson, int index) {
+		try {
+			
+			listPerson.remove(index);
+			return "Person Removed !";
+			
+		}catch(Exception ex) {
+			return ex.getMessage();
+			
+		}
+			
+		}
 }

@@ -1,5 +1,7 @@
 package com.pharmacie.app.models;
 
+import java.util.ArrayList;
+
 public class Medicine {
 	private int id;
 	private String name;
@@ -47,5 +49,31 @@ public class Medicine {
 		return " ID: " + id + "\n Name: " + name + "\n une petite description: " + des + "\n Price: " + price;
 	}
 	
+public String addPerson(ArrayList<Medicine> medicineList, Medicine medicine) {
+	try {
+		medicineList.add(medicine);
+		return "medicine Added";
+		
+	}catch(Exception ex) {
+		return ex.getMessage();
+		
+	}
+		
+	}
+    
+    
+    
+    public String editPerson(ArrayList<Medicine> medicineList, Medicine medicine, int index) {
+		try {
+			
+			medicineList.set(index, medicine);
+			return "medicine Edited !";
+			
+		}catch(Exception ex) {
+			return ex.getMessage();
+			
+		}
+			
+		}
 
 }
